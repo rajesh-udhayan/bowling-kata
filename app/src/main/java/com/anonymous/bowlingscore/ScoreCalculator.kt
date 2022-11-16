@@ -10,7 +10,11 @@ class ScoreCalculator {
     }
 
     fun getGameScore(game: Game): Int {
-        return 0
+        var score = 0
+        game.frames.forEach { frame ->
+            score += getFrameScore(frame)
+        }
+        return score
     }
 
 }

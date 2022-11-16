@@ -70,4 +70,19 @@ class ScoreCalculatorTest {
 
         assertThat(result).isEqualTo(0)
     }
+
+    @Test
+    fun `should return correct score for simple game`(){
+        val game =Game(
+            listOf(
+                Frame(1,1),
+                Frame(1,1),
+                Frame(1,1)
+            )
+        )
+
+        val result = scoreCalculator.getGameScore(game)
+
+        assertThat(result).isEqualTo(6)
+    }
 }
