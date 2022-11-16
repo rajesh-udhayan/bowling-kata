@@ -57,4 +57,16 @@ class ScoreCalculatorTest {
 
         assertThat(result).isEqualTo(22)
     }
+
+    @Test
+    fun `should return 0 for empty game`(){
+        val scoreCalculator = ScoreCalculator()
+        val game =Game(
+            listOf()
+        )
+
+        val result = scoreCalculator.getGameScore(game)
+
+        assertThat(result).isEqualTo(0)
+    }
 }

@@ -9,4 +9,8 @@ class ScoreCalculator {
                 (bonusRoll2 ?: 0)
     }
 
+    fun getGameScore(game: Game): Int {
+        return 0
+    }
+
 }
