@@ -13,7 +13,7 @@ class ScoreCalculator {
         var score = 0
         game.frames.forEachIndexed { frameNumber, frame ->
             val remainingRolls = game.frames.drop(frameNumber + 1).flatMap { listOf(it.firstRoll) }
-            val nextRoll = remainingRolls.getOrNull(0).takeIf { frame.let { (it.firstRoll + (it.secondRoll ?: 0) == 10)} }
+            val nextRoll = remainingRolls.getOrNull(0).takeIf { frame.isSpare }
             score += getFrameScore(frame, nextRoll)
         }
         return score
