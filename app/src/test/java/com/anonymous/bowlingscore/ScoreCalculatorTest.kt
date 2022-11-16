@@ -34,4 +34,15 @@ class ScoreCalculatorTest {
 
         assertThat(result).isEqualTo(8)
     }
+
+    @Test
+    fun `should return correct score for spare`(){
+        val scoreCalculator = ScoreCalculator()
+        val frame = Frame(5,3)
+        val bonusRoll = 6
+
+        val result = scoreCalculator.getFrameScore(frame, bonusRoll)
+
+        assertThat(result).isEqualTo(14)
+    }
 }
