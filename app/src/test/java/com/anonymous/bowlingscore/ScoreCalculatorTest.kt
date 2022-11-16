@@ -46,4 +46,15 @@ class ScoreCalculatorTest {
         assertThat(result).isEqualTo(16)
     }
 
+    @Test
+    fun `should return correct score for strike`(){
+        val scoreCalculator = ScoreCalculator()
+        val frame = Frame(10,null)
+        val bonusRoll1 = 6
+        val bonusRoll2 = 6
+
+        val result = scoreCalculator.getFrameScore(frame, bonusRoll1, bonusRoll2)
+
+        assertThat(result).isEqualTo(22)
+    }
 }
