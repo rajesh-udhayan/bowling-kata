@@ -14,4 +14,14 @@ class ScoreCalculatorTest {
 
         assertThat(result).isEqualTo(0)
     }
+
+    @Test
+    fun `should return correct frame score for single roll`(){
+        val scoreCalculator = ScoreCalculator()
+        val frame = Frame(5,null)
+
+        val result = scoreCalculator.getFrameScore(frame)
+
+        assertThat(result).isEqualTo(5)
+    }
 }
