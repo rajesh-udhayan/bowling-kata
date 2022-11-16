@@ -113,4 +113,19 @@ class ScoreCalculatorTest {
 
         assertThat(result).isEqualTo(14)
     }
+
+    @Test
+    fun `should return correct score for game with 2 strikes`() {
+        val game = Game(
+            listOf(
+                Frame(10, null),
+                Frame(10, null),
+                Frame(1, 1),
+            )
+        )
+
+        val result = scoreCalculator.getGameScore(game)
+
+        assertThat(result).isEqualTo(35)
+    }
 }
