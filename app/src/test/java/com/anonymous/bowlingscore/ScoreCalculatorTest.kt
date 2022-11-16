@@ -85,4 +85,18 @@ class ScoreCalculatorTest {
 
         assertThat(result).isEqualTo(6)
     }
+
+    @Test
+    fun `should return correct score for game with spare`(){
+        val game =Game(
+            listOf(
+                Frame(1,9),
+                Frame(1,1),
+            )
+        )
+
+        val result = scoreCalculator.getGameScore(game)
+
+        assertThat(result).isEqualTo(13)
+    }
 }
