@@ -34,4 +34,16 @@ class ScoreSimulatorTest {
         assertThat(scoreSimulator.game.frames.count()).isEqualTo(1)
         assertThat(scoreSimulator.game.frames[0]).isEqualTo(Frame(5, 2))
     }
+
+    @Test
+    fun `should return correct frames for 3 strike in a row`(){
+        scoreSimulator.addRoll(10)
+        scoreSimulator.addRoll(10)
+        scoreSimulator.addRoll(10)
+
+        assertThat(scoreSimulator.game.frames.count()).isEqualTo(3)
+        assertThat(scoreSimulator.game.frames[0]).isEqualTo(Frame(10, null))
+        assertThat(scoreSimulator.game.frames[1]).isEqualTo(Frame(10, null))
+        assertThat(scoreSimulator.game.frames[2]).isEqualTo(Frame(10, null))
+    }
 }
