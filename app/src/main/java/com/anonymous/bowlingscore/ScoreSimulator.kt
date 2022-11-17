@@ -29,6 +29,6 @@ class ScoreSimulator(val gameLength: Int = 10) {
     fun hasRoll(): Boolean {
         if (game.frames.count{it.isFinished} < gameLength) return true
         val lastFrame = game.frames.last()
-        return lastFrame.isSpare && game.bonusRoll1 == null
+        return lastFrame.isSpare && game.bonusRoll1 == null || lastFrame.isStrike && game.bonusRoll2 == null
     }
 }

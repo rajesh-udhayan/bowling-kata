@@ -81,4 +81,15 @@ class ScoreSimulatorTest {
         scoreSimulator.addRoll(8)
         assertThat(scoreSimulator.hasRoll()).isFalse()
     }
+
+    @Test
+    fun `should return true for strike`(){
+        val scoreSimulator = ScoreSimulator(1)
+        scoreSimulator.addRoll(10)
+        assertThat(scoreSimulator.hasRoll()).isTrue()
+        scoreSimulator.addRoll(2)
+        assertThat(scoreSimulator.hasRoll()).isTrue()
+        scoreSimulator.addRoll(4)
+        assertThat(scoreSimulator.hasRoll()).isFalse()
+    }
 }
