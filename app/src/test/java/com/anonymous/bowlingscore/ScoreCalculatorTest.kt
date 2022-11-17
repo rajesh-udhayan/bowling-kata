@@ -159,4 +159,20 @@ class ScoreCalculatorTest {
 
         assertThat(result).isEqualTo(16)
     }
+
+    @Test
+    fun `should return frame score for given frame number`(){
+        val game = Game(
+            listOf(
+                Frame(10, null),
+                Frame(10, null),
+                Frame(10, null),
+            ),
+            3,
+            3
+        )
+
+        val result = scoreCalculator.getFrameScore(game, 1)
+        assertThat(result).isEqualTo(23)
+    }
 }
