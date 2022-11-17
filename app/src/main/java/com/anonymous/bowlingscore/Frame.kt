@@ -6,4 +6,5 @@ data class Frame(
 ){
     val isStrike = firstRoll == 10
     val isSpare = !isStrike && firstRoll + (secondRoll ?: 0) == 10
+    val isFinished = isStrike || secondRoll != null
 }

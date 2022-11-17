@@ -26,4 +26,12 @@ class ScoreSimulatorTest {
         assertThat(scoreSimulator.game.frames[0]).isEqualTo(Frame(5, null))
     }
 
+    @Test
+    fun `should add second roll to the frame`(){
+        scoreSimulator.addRoll(5)
+        scoreSimulator.addRoll(2)
+
+        assertThat(scoreSimulator.game.frames.count()).isEqualTo(1)
+        assertThat(scoreSimulator.game.frames[0]).isEqualTo(Frame(5, 2))
+    }
 }
