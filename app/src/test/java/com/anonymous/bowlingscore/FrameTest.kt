@@ -12,4 +12,11 @@ class FrameTest {
         assertThat(frame.isSpare).isTrue()
         assertThat(frame.isStrike).isFalse()
     }
+
+    @Test
+    fun `should return false when not a spare`(){
+        val frame = Frame(2,7)
+
+        assertThat(frame.isSpare).isFalse()
+    }
 }
