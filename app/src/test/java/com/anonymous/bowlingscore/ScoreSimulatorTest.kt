@@ -70,4 +70,15 @@ class ScoreSimulatorTest {
         scoreSimulator.addRoll(7)
         assertThat(scoreSimulator.hasRoll()).isFalse()
     }
+
+    @Test
+    fun `should return true for spare`(){
+        val scoreSimulator = ScoreSimulator(1)
+        scoreSimulator.addRoll(2)
+        assertThat(scoreSimulator.hasRoll()).isTrue()
+        scoreSimulator.addRoll(8)
+        assertThat(scoreSimulator.hasRoll()).isTrue()
+        scoreSimulator.addRoll(8)
+        assertThat(scoreSimulator.hasRoll()).isFalse()
+    }
 }
