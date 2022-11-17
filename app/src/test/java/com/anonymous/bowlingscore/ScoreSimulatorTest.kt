@@ -46,4 +46,19 @@ class ScoreSimulatorTest {
         assertThat(scoreSimulator.game.frames[1]).isEqualTo(Frame(10, null))
         assertThat(scoreSimulator.game.frames[2]).isEqualTo(Frame(10, null))
     }
+
+    @Test
+    fun `should return bonus rolls for two strikes at last`(){
+        val scoreSimulator = ScoreSimulator(2)
+        scoreSimulator.addRoll(10)
+        scoreSimulator.addRoll(10)
+        scoreSimulator.addRoll(2)
+        scoreSimulator.addRoll(4)
+
+        assertThat(scoreSimulator.game.frames.count()).isEqualTo(2)
+        assertThat(scoreSimulator.game.frames[0]).isEqualTo(Frame(10, null))
+        assertThat(scoreSimulator.game.frames[1]).isEqualTo(Frame(10, null))
+        assertThat(scoreSimulator.game.bonusRoll1).isEqualTo(2)
+        assertThat(scoreSimulator.game.bonusRoll2).isEqualTo(4)
+    }
 }
