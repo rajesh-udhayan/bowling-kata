@@ -11,4 +11,14 @@ class ScoreSimulatorTest {
 
         assertThat(scoreSimulator.game.frames.count()).isEqualTo(0)
     }
+
+    @Test
+    fun `should add roll to the game`(){
+        val scoreSimulator = ScoreSimulator()
+
+        scoreSimulator.addRoll(5)
+
+        assertThat(scoreSimulator.game.frames.count()).isEqualTo(1)
+        assertThat(scoreSimulator.game.frames[0]).isEqualTo(Frame(5, null))
+    }
 }
