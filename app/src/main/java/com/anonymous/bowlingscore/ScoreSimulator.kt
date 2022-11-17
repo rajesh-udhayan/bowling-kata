@@ -5,11 +5,7 @@ class ScoreSimulator(val gameLength: Int = 10) {
 
     fun addRoll(roll: Int) {
         if (game.frames.count{it.isFinished} == gameLength){
-            if(game.bonusRoll1 == null) {
-                game = Game(game.frames, roll)
-            } else {
-                game = Game(game.frames, game.bonusRoll1, roll)
-            }
+            addBonusRoll(roll)
         } else {
             val lastFrame = game.frames.lastOrNull()
             val frames = if (lastFrame?.isFinished == false) {
@@ -18,6 +14,14 @@ class ScoreSimulator(val gameLength: Int = 10) {
 
             } else game.frames + Frame(roll, null)
             game = Game(frames)
+        }
+    }
+
+    private fun addBonusRoll(roll: Int) {
+        game = if (game.bonusRoll1 == null) {
+            Game(game.frames, roll)
+        } else {
+            Game(game.frames, game.bonusRoll1, roll)
         }
     }
 
