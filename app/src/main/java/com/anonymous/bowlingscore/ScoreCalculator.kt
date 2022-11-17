@@ -10,12 +10,19 @@ class ScoreCalculator {
     }
 
     fun getGameScore(game: Game): Int {
-        var score = 0
-        game.frames.forEachIndexed { frameNumber, frame ->
-            val (bonusRoll1, bonusRoll2) = game.getBonusRolls(frameNumber)
-            score += getFrameScore(frame, bonusRoll1, bonusRoll2)
-        }
-        return score
+        return List(game.frames.size) { i ->
+            getFrameScore(game, i)!!
+        }.takeIf { it.isNotEmpty() }?.reduce { acc, i -> acc + i } ?: 0
+    }
+
+    fun getFrameScore(game: Game, frameNumber: Int): Int? {
+        if (game.frames.getOrNull(frameNumber) == null) return null
+        val (bonusRoll1, bonusRoll2) = game.getBonusRolls(frameNumber)
+        return getFrameScore(
+            game.frames[frameNumber],
+            bonusRoll1,
+            bonusRoll2,
+        )
     }
 
 }
