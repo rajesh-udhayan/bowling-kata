@@ -4,6 +4,7 @@ class ScoreSimulator(val gameLength: Int = 10) {
     var game = Game(emptyList())
 
     fun addRoll(roll: Int) {
+        if(!hasRoll()) return
         if (game.frames.count{it.isFinished} == gameLength){
             addBonusRoll(roll)
         } else {
@@ -25,4 +26,9 @@ class ScoreSimulator(val gameLength: Int = 10) {
         }
     }
 
+    fun hasRoll(): Boolean {
+        if (game.frames.count{it.isFinished} < gameLength) return true
+        val lastFrame = game.frames.last()
+        return lastFrame.isSpare && game.bonusRoll1 == null
+    }
 }

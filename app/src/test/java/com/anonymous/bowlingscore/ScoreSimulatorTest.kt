@@ -61,4 +61,14 @@ class ScoreSimulatorTest {
         assertThat(scoreSimulator.game.bonusRoll1).isEqualTo(2)
         assertThat(scoreSimulator.game.bonusRoll2).isEqualTo(4)
     }
+
+    @Test
+    fun `should return no bonus rolls for not a spare or strike`(){
+        val scoreSimulator = ScoreSimulator(1)
+        scoreSimulator.addRoll(2)
+        assertThat(scoreSimulator.hasRoll()).isTrue()
+        scoreSimulator.addRoll(7)
+        assertThat(scoreSimulator.hasRoll()).isFalse()
+
+    }
 }
