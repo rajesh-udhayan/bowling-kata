@@ -92,4 +92,11 @@ class ScoreSimulatorTest {
         scoreSimulator.addRoll(4)
         assertThat(scoreSimulator.hasRoll()).isFalse()
     }
+
+    @Test
+    fun `pins remaining is 10 on new frame`(){
+        val scoreSimulator = ScoreSimulator(1)
+
+        assertThat(scoreSimulator.pinsRemaining).isEqualTo(10)
+    }
 }

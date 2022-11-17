@@ -31,4 +31,6 @@ class ScoreSimulator(val gameLength: Int = 10) {
         val lastFrame = game.frames.last()
         return lastFrame.isSpare && game.bonusRoll1 == null || lastFrame.isStrike && game.bonusRoll2 == null
     }
+
+    val pinsRemaining : Int = 10
 }
