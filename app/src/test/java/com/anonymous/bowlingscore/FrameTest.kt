@@ -19,4 +19,12 @@ class FrameTest {
 
         assertThat(frame.isSpare).isFalse()
     }
+
+    @Test
+    fun `should return true for strike`(){
+        val frame = Frame(10,null)
+
+        assertThat(frame.isStrike).isTrue()
+        assertThat(frame.isSpare).isFalse()
+    }
 }
