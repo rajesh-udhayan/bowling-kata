@@ -108,4 +108,13 @@ class ScoreSimulatorTest {
 
         assertThat(scoreSimulator.pinsRemaining).isEqualTo(8)
     }
+
+    @Test
+    fun `pins remaining should be 10 after strike`(){
+        val scoreSimulator = ScoreSimulator(1)
+
+        scoreSimulator.addRoll(10)
+
+        assertThat(scoreSimulator.pinsRemaining).isEqualTo(10)
+    }
 }
