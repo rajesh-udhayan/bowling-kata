@@ -1,6 +1,8 @@
 package com.anonymous.bowlingscore
 
-class ScoreParser {
+import javax.inject.Inject
+
+class ScoreParser @Inject constructor(){
 
     fun getRepresentation(frame: Frame?, bonus1: Int? = null, bonus2: Int? = null): String {
         if (frame == null) return ""

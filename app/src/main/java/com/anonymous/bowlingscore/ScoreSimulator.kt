@@ -1,7 +1,8 @@
 package com.anonymous.bowlingscore
 
+import javax.inject.Inject
 
-class ScoreSimulator {
+class ScoreSimulator @Inject constructor() {
     private var gameLength: Int = 10
     var game = Game(emptyList())
 
