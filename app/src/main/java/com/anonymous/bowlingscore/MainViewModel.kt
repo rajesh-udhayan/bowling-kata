@@ -8,7 +8,11 @@ import javax.inject.Inject
 import kotlin.random.Random
 
 @HiltViewModel
-class MainViewModel @Inject constructor(val simulator: ScoreSimulator) : ViewModel() {
+class MainViewModel @Inject constructor(
+    val simulator: ScoreSimulator,
+    val parser: ScoreParser,
+    val calculator: ScoreCalculator
+) : ViewModel() {
 
     private var mGameState = MutableLiveData<Game>()
     val gameState: LiveData<Game> = mGameState
@@ -24,4 +28,16 @@ class MainViewModel @Inject constructor(val simulator: ScoreSimulator) : ViewMod
         simulator.game = Game(emptyList())
         mGameState.postValue(simulator.game)
     }
+
+    fun parseScore(frameIndex: Int, game: Game): String{
+        return if (frameIndex == GAME_LENGTH - 1){
+            parser.getRepresentation(game.frames.getOrNull(frameIndex), game.bonusRoll1, game.bonusRoll2)
+        } else {
+            parser.getRepresentation(game.frames.getOrNull(frameIndex))
+        }
+    }
+
+    fun getFrameScore(frameIndex: Int, game: Game): Int? = calculator.getFrameScore(game, frameIndex)
+
+    fun getGameScore(game: Game): Int = calculator.getGameScore(game)
 }

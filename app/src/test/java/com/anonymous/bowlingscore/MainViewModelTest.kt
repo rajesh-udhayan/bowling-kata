@@ -3,7 +3,6 @@ package com.anonymous.bowlingscore
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import io.mockk.spyk
-import io.mockk.verify
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -15,11 +14,15 @@ class MainViewModelTest {
 
     lateinit var viewModel: MainViewModel
     lateinit var simulator: ScoreSimulator
+    lateinit var parser: ScoreParser
+    lateinit var calculator: ScoreCalculator
 
     @Before
     fun setUp(){
         simulator = spyk()
-        viewModel = MainViewModel(simulator)
+        parser = spyk()
+        calculator = spyk()
+        viewModel = MainViewModel(simulator, parser, calculator)
     }
 
     @Test
@@ -35,4 +38,5 @@ class MainViewModelTest {
 
         assertThat(viewModel.gameState.getValueForTest()?.frames).isNotEmpty()
     }
+
 }
