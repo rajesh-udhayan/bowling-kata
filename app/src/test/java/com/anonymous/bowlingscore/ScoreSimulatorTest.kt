@@ -99,4 +99,13 @@ class ScoreSimulatorTest {
 
         assertThat(scoreSimulator.pinsRemaining).isEqualTo(10)
     }
+
+    @Test
+    fun `pins remaining is 10 minus second roll`(){
+        val scoreSimulator = ScoreSimulator(1)
+
+        scoreSimulator.addRoll(2)
+
+        assertThat(scoreSimulator.pinsRemaining).isEqualTo(8)
+    }
 }

@@ -3,6 +3,11 @@ package com.anonymous.bowlingscore
 class ScoreSimulator(val gameLength: Int = 10) {
     var game = Game(emptyList())
 
+    val pinsRemaining : Int get(){
+        val lastFrame= game.frames.lastOrNull()
+        return 10 - (lastFrame?.firstRoll?.takeIf { !lastFrame.isFinished } ?: 0)
+    }
+
     fun addRoll(roll: Int) {
         if(!hasRoll()) return
         if (game.frames.count{it.isFinished} == gameLength){
@@ -32,5 +37,4 @@ class ScoreSimulator(val gameLength: Int = 10) {
         return lastFrame.isSpare && game.bonusRoll1 == null || lastFrame.isStrike && game.bonusRoll2 == null
     }
 
-    val pinsRemaining : Int = 10
 }
