@@ -22,4 +22,13 @@ class ScoreParserTest {
         val result = parser.getRepresentation(frame)
         assertThat(result).isEqualTo("2 /")
     }
+
+    @Test
+    fun `should return representation for strike`(){
+        val parser = ScoreParser()
+        val frame = Frame(10,null)
+
+        val result = parser.getRepresentation(frame)
+        assertThat(result).isEqualTo("x")
+    }
 }
