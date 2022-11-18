@@ -55,4 +55,14 @@ class ScoreParserTest {
 
         assertThat(result).isEqualTo("")
     }
+
+    @Test
+    fun `should return representation for last frame with bonus rolls`(){
+        val frame = Frame(10, null)
+        val bonus1 = 10
+        val bonus2 = 10
+        val result = parser.getRepresentation(frame, bonus1, bonus2)
+
+        assertThat(result).isEqualTo("x  x x")
+    }
 }
