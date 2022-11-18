@@ -46,4 +46,9 @@ class BowlingScoreViewTest {
     fun shouldDisplayTotalScoreText(){
         composeTestRule.onNodeWithTag("total_tag").assertIsDisplayed()
     }
+
+    @Test
+    fun shouldDisplaySimulateRollButton(){
+        composeTestRule.onNodeWithTag("simulate_btn_tag").assertIsDisplayed()
+    }
 }

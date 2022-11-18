@@ -1,10 +1,7 @@
 package com.anonymous.bowlingscore
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -33,6 +30,11 @@ fun BowlingScoreView(viewModel: MainViewModel){
                     }
                     Text(modifier = Modifier.testTag("total_tag"),
                         text = "Total: ")
+                    Button(modifier = Modifier.testTag("simulate_btn_tag"),
+                        onClick = {
+                    }){
+                        Text("Simulate Roll")
+                    }
                 }
         }
     }
