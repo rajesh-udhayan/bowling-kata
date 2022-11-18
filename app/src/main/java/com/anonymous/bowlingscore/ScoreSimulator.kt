@@ -5,7 +5,11 @@ class ScoreSimulator(val gameLength: Int = 10) {
 
     val pinsRemaining : Int get(){
         val lastFrame= game.frames.lastOrNull()
-        return 10 - (lastFrame?.firstRoll?.takeIf { !lastFrame.isFinished } ?: 0)
+        return if(game.frames.count{it.isFinished} < gameLength) {
+            10 - (lastFrame?.firstRoll?.takeIf { !lastFrame.isFinished } ?: 0)
+        } else {
+            (10 - (game.bonusRoll1 ?: 0)).takeIf { it != 0 } ?: 10
+        }
     }
 
     fun addRoll(roll: Int) {
