@@ -31,6 +31,8 @@ fun BowlingScoreView(viewModel: MainViewModel){
                         Text(modifier = Modifier.testTag("frame${it}_tag"),
                             text = "Frame  Rolls:  Score: ")
                     }
+                    Text(modifier = Modifier.testTag("total_tag"),
+                        text = "Total: ")
                 }
         }
     }

@@ -41,4 +41,9 @@ class BowlingScoreViewTest {
             composeTestRule.onNodeWithTag("frame${it}_tag").assertIsDisplayed()
         }
     }
+
+    @Test
+    fun shouldDisplayTotalScoreText(){
+        composeTestRule.onNodeWithTag("total_tag").assertIsDisplayed()
+    }
 }
