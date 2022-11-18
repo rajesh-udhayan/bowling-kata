@@ -31,4 +31,13 @@ class ScoreParserTest {
         val result = parser.getRepresentation(frame)
         assertThat(result).isEqualTo("x")
     }
+
+    @Test
+    fun `should return representation for single roll`(){
+        val parser = ScoreParser()
+        val frame = Frame(4,null)
+
+        val result = parser.getRepresentation(frame)
+        assertThat(result).isEqualTo("4")
+    }
 }
