@@ -1,14 +1,17 @@
 package com.anonymous.bowlingscore
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 
 const val GAME_LENGTH = 10
 
@@ -28,22 +31,24 @@ fun BowlingScoreView(viewModel: MainViewModel) {
                 )
             }
         ) {
-            Column {
+            Column(Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally) {
                 game?.let {
                     repeat(GAME_LENGTH) { index ->
                         Text(
                             modifier = Modifier.testTag("frame${index}_tag"),
-                            text = "Frame ${index + 1} Rolls: ${
-                                viewModel.getFrameScore(
-                                    index,
-                                    it
-                                ) ?: ""
-                            } Score: ${viewModel.parseScore(index, it)}"
+                            text = "Frame ${index + 1} " +
+                                    "Rolls: ${viewModel.parseScore(index, it)} " +
+                                    "Score: ${viewModel.getFrameScore(index, it) ?: ""}",
+                            style = TextStyle(fontSize = 20.sp)
                         )
+                        Spacer(Modifier.size(4.dp))
                     }
+                    Spacer(Modifier.size(12.dp))
                     Text(
                         modifier = Modifier.testTag("total_tag"),
-                        text = "Total: ${viewModel.getGameScore(it)}"
+                        text = "Total: ${viewModel.getGameScore(it)}",
+                        style = TextStyle(fontSize = 24.sp)
                     )
                 }
                 Row {
@@ -53,6 +58,7 @@ fun BowlingScoreView(viewModel: MainViewModel) {
                         }) {
                         Text("Simulate Roll")
                     }
+                    Spacer(Modifier.size(8.dp))
                     Button(modifier = Modifier.testTag("new_game_btn_tag"),
                         onClick = {
                             viewModel.startNewGame()
