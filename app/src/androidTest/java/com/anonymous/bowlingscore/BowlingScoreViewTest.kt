@@ -51,4 +51,9 @@ class BowlingScoreViewTest {
     fun shouldDisplaySimulateRollButton(){
         composeTestRule.onNodeWithTag("simulate_btn_tag").assertIsDisplayed()
     }
+
+    @Test
+    fun shouldDisplayNewGameButton(){
+        composeTestRule.onNodeWithTag("new_game_btn_tag").assertIsDisplayed()
+    }
 }
