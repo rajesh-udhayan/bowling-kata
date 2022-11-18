@@ -12,6 +12,7 @@ class ScoreParser {
     }
 
     private fun getCharacter(roll: Int?) = when(roll){
+        0 -> "-"
         10 -> "x"
         null -> ""
         else -> roll.toString()

@@ -61,8 +61,18 @@ class ScoreParserTest {
         val frame = Frame(10, null)
         val bonus1 = 10
         val bonus2 = 10
+
         val result = parser.getRepresentation(frame, bonus1, bonus2)
 
         assertThat(result).isEqualTo("x  x x")
+    }
+
+    @Test
+    fun `should return representation for 0 in a frame`(){
+        val frame = Frame(2, 0)
+
+        val result = parser.getRepresentation(frame)
+
+        assertThat(result).isEqualTo("2 -")
     }
 }
