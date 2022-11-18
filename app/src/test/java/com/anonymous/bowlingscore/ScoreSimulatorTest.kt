@@ -49,7 +49,8 @@ class ScoreSimulatorTest {
 
     @Test
     fun `should return bonus rolls for two strikes at last`(){
-        val scoreSimulator = ScoreSimulator(2)
+        val scoreSimulator = ScoreSimulator()
+        scoreSimulator.setGameLength(2)
         scoreSimulator.addRoll(10)
         scoreSimulator.addRoll(10)
         scoreSimulator.addRoll(2)
@@ -64,7 +65,8 @@ class ScoreSimulatorTest {
 
     @Test
     fun `should return false for not a spare or strike`(){
-        val scoreSimulator = ScoreSimulator(1)
+        val scoreSimulator = ScoreSimulator()
+        scoreSimulator.setGameLength(1)
         scoreSimulator.addRoll(2)
         assertThat(scoreSimulator.hasRoll()).isTrue()
         scoreSimulator.addRoll(7)
@@ -73,7 +75,8 @@ class ScoreSimulatorTest {
 
     @Test
     fun `should return true for spare`(){
-        val scoreSimulator = ScoreSimulator(1)
+        val scoreSimulator = ScoreSimulator()
+        scoreSimulator.setGameLength(1)
         scoreSimulator.addRoll(2)
         assertThat(scoreSimulator.hasRoll()).isTrue()
         scoreSimulator.addRoll(8)
@@ -84,7 +87,8 @@ class ScoreSimulatorTest {
 
     @Test
     fun `should return true for strike`(){
-        val scoreSimulator = ScoreSimulator(1)
+        val scoreSimulator = ScoreSimulator()
+        scoreSimulator.setGameLength(1)
         scoreSimulator.addRoll(10)
         assertThat(scoreSimulator.hasRoll()).isTrue()
         scoreSimulator.addRoll(2)
@@ -95,14 +99,16 @@ class ScoreSimulatorTest {
 
     @Test
     fun `pins remaining is 10 on new frame`(){
-        val scoreSimulator = ScoreSimulator(1)
+        val scoreSimulator = ScoreSimulator()
+        scoreSimulator.setGameLength(1)
 
         assertThat(scoreSimulator.pinsRemaining).isEqualTo(10)
     }
 
     @Test
     fun `pins remaining is 10 minus second roll`(){
-        val scoreSimulator = ScoreSimulator(1)
+        val scoreSimulator = ScoreSimulator()
+        scoreSimulator.setGameLength(1)
 
         scoreSimulator.addRoll(2)
 
@@ -111,7 +117,8 @@ class ScoreSimulatorTest {
 
     @Test
     fun `pins remaining should be 10 after strike`(){
-        val scoreSimulator = ScoreSimulator(1)
+        val scoreSimulator = ScoreSimulator()
+        scoreSimulator.setGameLength(1)
 
         scoreSimulator.addRoll(10)
 
@@ -120,7 +127,8 @@ class ScoreSimulatorTest {
 
     @Test
     fun `pins remaining should be 10 after first bonus strike`(){
-        val scoreSimulator = ScoreSimulator(1)
+        val scoreSimulator = ScoreSimulator()
+        scoreSimulator.setGameLength(1)
 
         scoreSimulator.addRoll(10)
         scoreSimulator.addRoll(10)
@@ -130,7 +138,8 @@ class ScoreSimulatorTest {
 
     @Test
     fun `pins remaining should be 10 minus first bonus roll`(){
-        val scoreSimulator = ScoreSimulator(1)
+        val scoreSimulator = ScoreSimulator()
+        scoreSimulator.setGameLength(1)
 
         scoreSimulator.addRoll(10)
         scoreSimulator.addRoll(2)

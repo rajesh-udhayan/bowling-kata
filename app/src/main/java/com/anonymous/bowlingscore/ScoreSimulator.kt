@@ -1,20 +1,27 @@
 package com.anonymous.bowlingscore
 
-class ScoreSimulator(val gameLength: Int = 10) {
+
+class ScoreSimulator {
+    private var gameLength: Int = 10
     var game = Game(emptyList())
 
-    val pinsRemaining : Int get(){
-        val lastFrame= game.frames.lastOrNull()
-        return if(game.frames.count{it.isFinished} < gameLength) {
-            10 - (lastFrame?.firstRoll?.takeIf { !lastFrame.isFinished } ?: 0)
-        } else {
-            (10 - (game.bonusRoll1 ?: 0)).takeIf { it != 0 } ?: 10
-        }
+    fun setGameLength(length: Int) {
+        gameLength = length
     }
 
+    val pinsRemaining: Int
+        get() {
+            val lastFrame = game.frames.lastOrNull()
+            return if (game.frames.count { it.isFinished } < gameLength) {
+                10 - (lastFrame?.firstRoll?.takeIf { !lastFrame.isFinished } ?: 0)
+            } else {
+                (10 - (game.bonusRoll1 ?: 0)).takeIf { it != 0 } ?: 10
+            }
+        }
+
     fun addRoll(roll: Int) {
-        if(!hasRoll()) return
-        if (game.frames.count{it.isFinished} == gameLength){
+        if (!hasRoll()) return
+        if (game.frames.count { it.isFinished } == gameLength) {
             addBonusRoll(roll)
         } else {
             val lastFrame = game.frames.lastOrNull()
@@ -36,7 +43,7 @@ class ScoreSimulator(val gameLength: Int = 10) {
     }
 
     fun hasRoll(): Boolean {
-        if (game.frames.count{it.isFinished} < gameLength) return true
+        if (game.frames.count { it.isFinished } < gameLength) return true
         val lastFrame = game.frames.last()
         return lastFrame.isSpare && game.bonusRoll1 == null || lastFrame.isStrike && game.bonusRoll2 == null
     }
