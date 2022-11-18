@@ -1,4 +1,4 @@
-package com.anonymous.bowlingscore
+package com.anonymous.bowlingscore.presentation
 
 import androidx.activity.viewModels
 import androidx.compose.ui.test.assertIsDisplayed

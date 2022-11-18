@@ -1,6 +1,10 @@
-package com.anonymous.bowlingscore
+package com.anonymous.bowlingscore.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.anonymous.bowlingscore.domain.ScoreCalculator
+import com.anonymous.bowlingscore.domain.ScoreParser
+import com.anonymous.bowlingscore.domain.ScoreSimulator
+import com.anonymous.bowlingscore.utils.getValueForTest
 import com.google.common.truth.Truth.assertThat
 import io.mockk.spyk
 import org.junit.Before

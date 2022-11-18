@@ -1,5 +1,7 @@
-package com.anonymous.bowlingscore
+package com.anonymous.bowlingscore.domain
 
+import com.anonymous.bowlingscore.model.Frame
+import com.anonymous.bowlingscore.model.Game
 import javax.inject.Inject
 
 class ScoreCalculator @Inject constructor(){

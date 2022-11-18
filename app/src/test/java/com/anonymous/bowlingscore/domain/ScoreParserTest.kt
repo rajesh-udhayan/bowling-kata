@@ -1,5 +1,6 @@
-package com.anonymous.bowlingscore
+package com.anonymous.bowlingscore.domain
 
+import com.anonymous.bowlingscore.model.Frame
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test

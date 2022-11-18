@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.anonymous.bowlingscore
+package com.anonymous.bowlingscore.utils
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer

@@ -1,8 +1,12 @@
-package com.anonymous.bowlingscore
+package com.anonymous.bowlingscore.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.anonymous.bowlingscore.domain.ScoreCalculator
+import com.anonymous.bowlingscore.domain.ScoreParser
+import com.anonymous.bowlingscore.domain.ScoreSimulator
+import com.anonymous.bowlingscore.model.Game
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlin.random.Random

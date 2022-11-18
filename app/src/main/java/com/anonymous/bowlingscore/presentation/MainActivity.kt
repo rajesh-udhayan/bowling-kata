@@ -1,4 +1,4 @@
-package com.anonymous.bowlingscore
+package com.anonymous.bowlingscore.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

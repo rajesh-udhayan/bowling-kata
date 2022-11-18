@@ -1,4 +1,4 @@
-package com.anonymous.bowlingscore
+package com.anonymous.bowlingscore.utils
 
 import android.app.Application
 import android.content.Context

@@ -1,4 +1,4 @@
-package com.anonymous.bowlingscore
+package com.anonymous.bowlingscore.presentation
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -12,6 +12,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.anonymous.bowlingscore.R
 
 const val GAME_LENGTH = 10
 

@@ -1,8 +1,10 @@
-package com.anonymous.bowlingscore
+package com.anonymous.bowlingscore.domain
 
-import org.junit.Test
+import com.anonymous.bowlingscore.model.Frame
+import com.anonymous.bowlingscore.model.Game
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
+import org.junit.Test
 
 class ScoreCalculatorTest {
     private lateinit var scoreCalculator: ScoreCalculator
@@ -62,7 +64,7 @@ class ScoreCalculatorTest {
 
     @Test
     fun `should return 0 for empty game`(){
-        val game =Game(
+        val game = Game(
             listOf()
         )
 
@@ -73,7 +75,7 @@ class ScoreCalculatorTest {
 
     @Test
     fun `should return correct score for simple game`(){
-        val game =Game(
+        val game = Game(
             listOf(
                 Frame(1,1),
                 Frame(1,1),
@@ -88,7 +90,7 @@ class ScoreCalculatorTest {
 
     @Test
     fun `should return correct score for game with spare`(){
-        val game =Game(
+        val game = Game(
             listOf(
                 Frame(1,9),
                 Frame(1,1),
@@ -102,7 +104,7 @@ class ScoreCalculatorTest {
 
     @Test
     fun `should return correct score for game with strike`(){
-        val game =Game(
+        val game = Game(
             listOf(
                 Frame(10,null),
                 Frame(1,1),

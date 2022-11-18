@@ -1,4 +1,4 @@
-package com.anonymous.bowlingscore
+package com.anonymous.bowlingscore.model
 
 data class Frame(
     val firstRoll: Int,
