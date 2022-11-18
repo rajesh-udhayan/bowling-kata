@@ -18,6 +18,7 @@ class ScoreParserTest {
         val frame = Frame(2,4)
 
         val result = parser.getRepresentation(frame)
+
         assertThat(result).isEqualTo("2 4")
     }
 
@@ -26,6 +27,7 @@ class ScoreParserTest {
         val frame = Frame(2,8)
 
         val result = parser.getRepresentation(frame)
+
         assertThat(result).isEqualTo("2 /")
     }
 
@@ -34,6 +36,7 @@ class ScoreParserTest {
         val frame = Frame(10,null)
 
         val result = parser.getRepresentation(frame)
+
         assertThat(result).isEqualTo("x")
     }
 
@@ -42,6 +45,7 @@ class ScoreParserTest {
         val frame = Frame(4,null)
 
         val result = parser.getRepresentation(frame)
+
         assertThat(result).isEqualTo("4")
     }
 
