@@ -1,8 +1,10 @@
 package com.anonymous.bowlingscore
 
 class ScoreParser {
+
     fun getRepresentation(frame: Frame): String {
-        return "${frame.firstRoll} ${frame.secondRoll}"
+        val secondRoll = if (frame.isSpare) "/" else frame.secondRoll.toString()
+        return "${frame.firstRoll} $secondRoll"
     }
 
 }
