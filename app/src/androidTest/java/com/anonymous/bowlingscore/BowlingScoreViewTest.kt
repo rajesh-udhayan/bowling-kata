@@ -3,6 +3,7 @@ package com.anonymous.bowlingscore
 import androidx.activity.viewModels
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import com.anonymous.bowlingscore.R.string.app_name
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -32,5 +33,12 @@ class BowlingScoreViewTest {
     @Test
     fun shouldDisplayAppTitle(){
         composeTestRule.onNodeWithText(composeTestRule.activity.getString(app_name)).assertIsDisplayed()
+    }
+
+    @Test
+    fun shouldDisplayFrameScoreText(){
+        repeat(GAME_LENGTH){
+            composeTestRule.onNodeWithTag("frame${it}_tag").assertIsDisplayed()
+        }
     }
 }
