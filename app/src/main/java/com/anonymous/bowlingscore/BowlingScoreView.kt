@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
@@ -11,7 +13,9 @@ import androidx.compose.ui.res.stringResource
 const val GAME_LENGTH = 10
 
 @Composable
-fun BowlingScoreView(viewModel: MainViewModel){
+fun BowlingScoreView(viewModel: MainViewModel) {
+    val game by viewModel.gameState.observeAsState()
+
     MaterialTheme {
         Scaffold(
             topBar = {
@@ -24,26 +28,40 @@ fun BowlingScoreView(viewModel: MainViewModel){
                 )
             }
         ) {
-                Column {
-                    repeat(GAME_LENGTH){
-                        Text(modifier = Modifier.testTag("frame${it}_tag"),
-                            text = "Frame  Rolls:  Score: ")
+            Column {
+                game?.let {
+                    repeat(GAME_LENGTH) { index ->
+                        Text(
+                            modifier = Modifier.testTag("frame${index}_tag"),
+                            text = "Frame ${index + 1} Rolls: ${
+                                viewModel.getFrameScore(
+                                    index,
+                                    it
+                                ) ?: ""
+                            } Score: ${viewModel.parseScore(index, it)}"
+                        )
                     }
-                    Text(modifier = Modifier.testTag("total_tag"),
-                        text = "Total: ")
-                    Row {
-                        Button(modifier = Modifier.testTag("simulate_btn_tag"),
-                            onClick = {
-                            }){
-                            Text("Simulate Roll")
-                        }
-                        Button(modifier = Modifier.testTag("new_game_btn_tag"),
-                            onClick = {
-                        }){
-                            Text("New Game")
-                        }
+                    Text(
+                        modifier = Modifier.testTag("total_tag"),
+                        text = "Total: ${viewModel.getGameScore(it)}"
+                    )
+                }
+                Row {
+                    Button(modifier = Modifier.testTag("simulate_btn_tag"),
+                        onClick = {
+                            viewModel.addRoll()
+                        }) {
+                        Text("Simulate Roll")
+                    }
+                    Button(modifier = Modifier.testTag("new_game_btn_tag"),
+                        onClick = {
+                            viewModel.startNewGame()
+                        }) {
+                        Text("New Game")
                     }
                 }
+            }
         }
     }
+
 }
