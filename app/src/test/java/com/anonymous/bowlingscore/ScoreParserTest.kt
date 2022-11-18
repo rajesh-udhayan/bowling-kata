@@ -44,4 +44,11 @@ class ScoreParserTest {
         val result = parser.getRepresentation(frame)
         assertThat(result).isEqualTo("4")
     }
+
+    @Test
+    fun `should return representation for null`(){
+        val result = parser.getRepresentation(null)
+
+        assertThat(result).isEqualTo("")
+    }
 }
