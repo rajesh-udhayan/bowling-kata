@@ -1,5 +1,6 @@
 package com.anonymous.bowlingscore
 
+import com.google.common.truth.Truth.assertThat
 import org.junit.Test
 
 class ScoreParserTest {
@@ -10,6 +11,6 @@ class ScoreParserTest {
         val frame = Frame(2,4)
 
         val result = parser.getRepresentation(frame)
-        com.google.common.truth.Truth.assertThat(result).isEqualTo("2 4")
+        assertThat(result).isEqualTo("2 4")
     }
 }
